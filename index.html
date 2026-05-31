@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nivora Coffee — Meta Ads Case Study · Om Joshi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:           #F5F5F7;
+      --surface:      #FFFFFF;
+      --dark:         #0C0C10;
+      --dark-2:       #18181F;
+      --text:         #111118;
+      --text-2:       #5C5C6E;
+      --text-3:       #9A9AAD;
+      --border:       #E2E2EC;
+      --accent:       #E8A020;
+      --accent-h:     #D4911A;
+      --accent-dim:   rgba(232,160,32,.10);
+      --accent-dim2:  rgba(232,160,32,.18);
+      --green:        #059669;
+      --green-dim:    rgba(5,150,105,.08);
+      --red:          #DC2626;
+      --red-dim:      rgba(220,38,38,.08);
+      --sh-xs:        0 1px 2px rgba(0,0,0,.05);
+      --sh-sm:        0 2px 8px rgba(0,0,0,.07);
+      --sh-md:        0 8px 28px rgba(0,0,0,.09);
+      --r:            12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 54px;
+      display: flex; align-items: center;
+      padding: 0 24px;
+      background: rgba(12,12,16,.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .nav-inner {
+      width: 100%; max-width: 1040px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-name {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 15px; color: #fff; letter-spacing: -.02em;
+    }
+    .nav-sep { width: 1px; height: 14px; background: rgba(255,255,255,.18); }
+    .nav-role { font-size: 12px; color: rgba(255,255,255,.38); font-weight: 400; }
+    .btn-cta {
+      background: var(--accent); color: #000;
+      font-family: 'DM Sans', sans-serif; font-weight: 600;
+      font-size: 13px; padding: 8px 18px;
+      border: none; border-radius: 7px; cursor: pointer;
+      transition: background .15s, transform .1s;
+      letter-spacing: -.01em;
+    }
+    .btn-cta:hover { background: var(--accent-h); transform: translateY(-1px); }
+    .btn-cta:active { transform: translateY(0); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark); padding: 118px 24px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -120px; right: -80px;
+      width: 640px; height: 640px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,160,32,.07) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -100px; left: -60px;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,160,32,.04) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1040px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(232,160,32,.1); border: 1px solid rgba(232,160,32,.22);
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+      padding: 4px 11px; border-radius: 20px; margin-bottom: 26px;
+    }
+    .hero-tag::before {
+      content: ''; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--accent);
+    }
+    .hero-title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(40px, 6.5vw, 76px);
+      line-height: 1.0; color: #fff; letter-spacing: -.035em;
+      margin-bottom: 8px;
+    }
+    .hero-subtitle {
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      font-size: clamp(18px, 2.8vw, 32px);
+      line-height: 1.0; color: rgba(255,255,255,.35); letter-spacing: -.025em;
+      margin-bottom: 28px;
+    }
+    .hero-desc {
+      max-width: 560px; font-size: 15.5px; font-weight: 300;
+      color: rgba(255,255,255,.5); line-height: 1.75; margin-bottom: 44px;
+    }
+    .hero-desc strong { color: rgba(255,255,255,.82); font-weight: 500; }
+
+    .hero-stats {
+      display: flex; flex-wrap: wrap;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--r); overflow: hidden;
+      margin-bottom: 32px; max-width: 720px;
+    }
+    .hero-stat {
+      flex: 1; min-width: 130px;
+      padding: 20px 24px;
+      border-right: 1px solid rgba(255,255,255,.07);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-val {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 28px; color: #fff; letter-spacing: -.03em;
+      display: block; line-height: 1.1; margin-bottom: 4px;
+    }
+    .hero-stat-label {
+      font-size: 10px; color: rgba(255,255,255,.32);
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase; letter-spacing: .09em;
+    }
+
+    .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    /* 
+      ⚡ DOWNLOAD BUTTON — Campaign Report Link
+      Replace href="#CAMPAIGN_REPORT_URL" below with your actual link.
+      Example: href="https://drive.google.com/your-report-link"
+      Or:       href="https://om-joshi.carrd.co/nivora-report.pdf"
+    */
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.11);
+      color: rgba(255,255,255,.75); font-family: 'DM Sans', sans-serif;
+      font-weight: 500; font-size: 13px; padding: 10px 18px;
+      border-radius: 8px; cursor: pointer; transition: background .15s, border-color .15s;
+    }
+    .btn-download:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.18); }
+    .btn-download svg { flex-shrink: 0; }
+
+    .hero-period {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: rgba(255,255,255,.2); margin-top: 30px; letter-spacing: .05em;
+    }
+
+    /* ── SHARED LAYOUT ── */
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    .white-band { background: #fff; border-top: 1px solid var(--border); }
+
+    .section { padding: 68px 0; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 28px; letter-spacing: -.02em; color: var(--text);
+      margin-bottom: 14px; line-height: 1.15;
+    }
+    .section-desc {
+      font-size: 15px; color: var(--text-2);
+      max-width: 600px; line-height: 1.72; margin-bottom: 38px;
+    }
+
+    /* ── FADE-IN ── */
+    .fi { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
+    .fi.on { opacity: 1; transform: translateY(0); }
+    .fi.d1 { transition-delay: .08s; }
+    .fi.d2 { transition-delay: .16s; }
+    .fi.d3 { transition-delay: .24s; }
+
+    /* ── CONTEXT GRID ── */
+    .ctx-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-bottom: 0;
+    }
+    @media (max-width: 620px) { .ctx-grid { grid-template-columns: 1fr; } }
+    .ctx-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 22px; box-shadow: var(--sh-xs);
+    }
+    .ctx-card.dark { background: var(--dark); border-color: transparent; }
+    .ctx-lbl {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text-3); margin-bottom: 7px;
+    }
+    .ctx-card.dark .ctx-lbl { color: rgba(255,255,255,.3); }
+    .ctx-val { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.55; }
+    .ctx-card.dark .ctx-val { color: rgba(255,255,255,.88); }
+
+    /* ── ARCH DIAGRAM ── */
+    .arch-wrap {
+      display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 0; align-items: stretch; margin: 36px 0;
+      overflow-x: auto; padding-bottom: 4px;
+    }
+    @media (max-width: 720px) {
+      .arch-wrap { grid-template-columns: 1fr; gap: 4px; }
+      .arch-arrow { transform: rotate(90deg); padding: 8px 0; }
+    }
+    .arch-node {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 22px 20px; box-shadow: var(--sh-xs);
+      min-width: 200px;
+    }
+    .arch-arrow {
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 10px; color: var(--text-3); flex-shrink: 0;
+    }
+    .arch-ico {
+      width: 34px; height: 34px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px; font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 14px; color: #fff;
+    }
+    .arch-ico.meta { background: linear-gradient(135deg, #0866FF, #1ABCFE); }
+    .arch-ico.bridge { background: linear-gradient(135deg, #1C1C22, #383845); }
+    .arch-ico.amazon { background: linear-gradient(135deg, #FF9900, #FFB547); }
+    .arch-node-lbl {
+      font-family: 'JetBrains Mono', monospace; font-size: 9px;
+      font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text-3); margin-bottom: 4px;
+    }
+    .arch-node-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 15px; color: var(--text); margin-bottom: 12px;
+    }
+    .arch-items { list-style: none; }
+    .arch-items li {
+      font-size: 12px; color: var(--text-2);
+      padding: 4px 0; display: flex; align-items: flex-start; gap: 7px;
+      border-bottom: 1px solid var(--border);
+    }
+    .arch-items li:last-child { border-bottom: none; }
+    .arch-items li::before { content: '—'; color: var(--text-3); flex-shrink: 0; margin-top: 1px; }
+
+    .callout {
+      background: var(--accent-dim); border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0; padding: 14px 18px;
+      font-size: 13.5px; color: #6B4500; line-height: 1.68;
+      margin: 28px 0;
+    }
+    .callout strong { color: #3D2900; font-weight: 600; }
+
+    /* ── AUDIENCE CARDS ── */
+    .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    @media (max-width: 680px) { .aud-grid { grid-template-columns: 1fr; } }
+    .aud-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 26px; box-shadow: var(--sh-xs);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .aud-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .aud-tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: var(--accent-dim); border: 1px solid rgba(232,160,32,.2);
+      color: #8A5800; font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 20px; margin-bottom: 14px;
+    }
+    .aud-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 18px; color: var(--text); margin-bottom: 5px; letter-spacing: -.01em;
+    }
+    .aud-sub { font-size: 13px; color: var(--text-2); margin-bottom: 16px; line-height: 1.55; }
+    .aud-hr { height: 1px; background: var(--border); margin: 16px 0; }
+    .aud-section-lbl {
+      font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+      font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-3); margin-bottom: 9px;
+    }
+    .aud-item {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5;
+    }
+    .aud-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: 7px;
+    }
+    .aud-product {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 7px; font-size: 12px; font-weight: 500;
+      color: var(--text); padding: 6px 12px; margin-top: 12px;
+    }
+
+    /* ── CREATIVES ── */
+    .cr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 32px 0; }
+    @media (max-width: 640px) { .cr-grid { grid-template-columns: 1fr; } }
+
+    .cr-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden; box-shadow: var(--sh-xs);
+      transition: box-shadow .2s, transform .2s; cursor: pointer;
+    }
+    .cr-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+    .cr-card.killed { opacity: .6; cursor: default; pointer-events: none; }
+
+    .cr-img-wrap {
+      position: relative; aspect-ratio: 4/3;
+      background: #F0F0F4; overflow: hidden;
+    }
+    .cr-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* 
+      ⚡ CREATIVE PLACEHOLDER STYLING
+      The placeholders below will disappear once you replace them with <img> tags.
+    */
+    .cr-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 9px;
+      border: 2px dashed #D8D8E2; padding: 20px;
+    }
+    .cr-placeholder svg { color: var(--text-3); }
+    .cr-placeholder-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--text-3); text-align: center; line-height: 1.55;
+    }
+    .cr-placeholder-path {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--accent); background: var(--accent-dim);
+      padding: 3px 9px; border-radius: 4px; text-align: center;
+    }
+    .cr-badge {
+      position: absolute; top: 10px; right: 10px;
+      font-family: 'JetBrains Mono', monospace; font-size: 9px;
+      font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 20px;
+    }
+    .cr-badge.on { background: rgba(5,150,105,.12); color: var(--green); border: 1px solid rgba(5,150,105,.2); }
+    .cr-badge.off { background: var(--red-dim); color: var(--red); border: 1px solid rgba(220,38,38,.14); }
+
+    .view-hint {
+      position: absolute; bottom: 10px; left: 50%;
+      transform: translateX(-50%) translateY(5px); opacity: 0;
+      background: rgba(0,0,0,.7); color: #fff; font-size: 11px;
+      font-weight: 500; padding: 5px 13px; border-radius: 20px;
+      transition: opacity .15s, transform .15s; pointer-events: none;
+      white-space: nowrap; backdrop-filter: blur(4px);
+    }
+    .cr-card:hover .cr-img-wrap .view-hint { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .cr-body { padding: 16px 18px; }
+    .cr-hook {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 14.5px; color: var(--text); margin-bottom: 3px; letter-spacing: -.01em;
+    }
+    .cr-adset {
+      font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+      color: var(--text-3); margin-bottom: 11px;
+      text-transform: uppercase; letter-spacing: .08em;
+    }
+    .cr-stats { display: flex; gap: 14px; }
+    .cr-stat { display: flex; flex-direction: column; gap: 2px; }
+    .cr-stat-val {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 14px; color: var(--text);
+    }
+    .cr-stat-lbl {
+      font-size: 9.5px; color: var(--text-3);
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase; letter-spacing: .07em;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(0,0,0,.88); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; opacity: 0; pointer-events: none;
+      transition: opacity .2s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lb-wrap {
+      position: relative; max-width: 820px; width: 100%;
+      background: var(--dark-2); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px; overflow: hidden;
+      transform: scale(.96); transition: transform .2s;
+    }
+    .lightbox.open .lb-wrap { transform: scale(1); }
+
+    .lb-media {
+      aspect-ratio: 4/3; background: #090910;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .lb-media img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+    .lb-media-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+    }
+    .lb-media-placeholder svg { color: rgba(255,255,255,.18); width: 40px; height: 40px; }
+    .lb-media-placeholder p {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      color: rgba(255,255,255,.28); text-align: center; padding: 0 24px;
+    }
+    .lb-media-placeholder .lb-path {
+      font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+      color: var(--accent); background: rgba(232,160,32,.1);
+      padding: 4px 11px; border-radius: 5px;
+    }
+
+    .lb-info { padding: 18px 22px; border-top: 1px solid rgba(255,255,255,.06); }
+    .lb-hook {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 19px; color: #fff; margin-bottom: 4px; letter-spacing: -.01em;
+    }
+    .lb-desc { font-size: 12.5px; color: rgba(255,255,255,.4); line-height: 1.6; }
+
+    .lb-close {
+      position: absolute; top: 12px; right: 12px;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: rgba(255,255,255,.65); font-size: 15px;
+      transition: background .15s; line-height: 1; z-index: 2;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.13); }
+
+    .lb-nav-btn {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: rgba(255,255,255,.7); font-size: 20px;
+      transition: background .15s; z-index: 301;
+    }
+    .lb-nav-btn:hover { background: rgba(255,255,255,.15); }
+    .lb-prev { left: 20px; }
+    .lb-next { right: 20px; }
+    .lb-counter {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: rgba(255,255,255,.3); z-index: 301;
+    }
+
+    /* ── METRICS ── */
+    .met-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin: 32px 0;
+    }
+    @media (max-width: 640px) { .met-grid { grid-template-columns: 1fr 1fr; } }
+
+    .met-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 20px; box-shadow: var(--sh-xs);
+      position: relative; overflow: hidden;
+    }
+    .met-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--border);
+    }
+    .met-card.a::before { background: var(--accent); }
+    .met-card.g::before { background: var(--green); }
+    .met-lbl {
+      font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+      font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-3); margin-bottom: 9px;
+    }
+    .met-val {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 30px; letter-spacing: -.035em; color: var(--text);
+      line-height: 1; margin-bottom: 5px;
+    }
+    .met-note { font-size: 11.5px; color: var(--text-3); line-height: 1.5; }
+
+    /* ── WEEK COMPARE ── */
+    .wk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 28px 0; }
+    @media (max-width: 580px) { .wk-grid { grid-template-columns: 1fr; } }
+    .wk-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 22px; box-shadow: var(--sh-xs);
+    }
+    .wk-card.w2 { background: var(--green-dim); border-color: rgba(5,150,105,.18); }
+    .wk-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+      font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text-3); margin-bottom: 3px;
+    }
+    .wk-label.g { color: var(--green); }
+    .wk-period {
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      font-size: 14px; color: var(--text); margin-bottom: 16px;
+    }
+    .wk-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-size: 13px; color: var(--text-2);
+      padding: 7px 0; border-bottom: 1px solid var(--border);
+    }
+    .wk-row:last-child { border-bottom: none; }
+    .wk-row span:last-child {
+      font-family: 'JetBrains Mono', monospace; font-weight: 500;
+      font-size: 13px; color: var(--text);
+    }
+    .wk-row span.better { color: var(--green); }
+
+    /* ── DECISIONS ── */
+    .dec-list { margin: 32px 0; display: flex; flex-direction: column; gap: 3px; }
+    .dec-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden; transition: box-shadow .2s;
+    }
+    .dec-item:hover { box-shadow: var(--sh-sm); }
+    .dec-head { display: flex; align-items: flex-start; gap: 18px; padding: 22px 24px; }
+    .dec-num {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 34px; color: var(--accent-dim2);
+      line-height: 1; flex-shrink: 0; width: 38px;
+    }
+    .dec-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 16.5px; color: var(--text); margin-bottom: 3px; letter-spacing: -.01em;
+    }
+    .dec-sub { font-size: 12.5px; color: var(--text-3); }
+    .dec-body {
+      padding: 0 24px 20px 80px;
+      font-size: 13.5px; color: var(--text-2); line-height: 1.72;
+    }
+    .dec-body strong { color: var(--text); font-weight: 600; }
+    .dec-tag {
+      display: inline-flex; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 9px;
+      font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 20px; margin-top: 11px;
+    }
+    .dec-tag.s { background: var(--accent-dim); color: #8A5800; }
+    .dec-tag.t { background: rgba(37,99,235,.07); color: #1D4ED8; }
+    .dec-tag.d { background: var(--green-dim); color: var(--green); }
+
+    /* ── LEARNINGS ── */
+    .learn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+    @media (max-width: 620px) { .learn-grid { grid-template-columns: 1fr; } }
+    .learn-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 22px; box-shadow: var(--sh-xs);
+    }
+    .learn-icon { font-size: 22px; margin-bottom: 10px; }
+    .learn-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 15px; color: var(--text); margin-bottom: 6px; letter-spacing: -.01em;
+    }
+    .learn-desc { font-size: 13px; color: var(--text-2); line-height: 1.65; }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--dark); padding: 80px 24px 72px; }
+    .contact-inner { max-width: 1040px; margin: 0 auto; }
+    .contact-lbl {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(255,255,255,.28); margin-bottom: 12px;
+    }
+    .contact-title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(30px, 5vw, 54px);
+      color: #fff; letter-spacing: -.035em; line-height: 1.05; margin-bottom: 14px;
+    }
+    .contact-title em { color: var(--accent); font-style: italic; }
+    .contact-desc {
+      font-size: 15px; color: rgba(255,255,255,.42);
+      max-width: 460px; line-height: 1.72; margin-bottom: 44px;
+    }
+    .contact-links {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--r); padding: 15px 18px; color: rgba(255,255,255,.72);
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .contact-link:hover {
+      background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.15); color: #fff;
+    }
+    .cl-ico {
+      width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cl-text { flex: 1; min-width: 0; }
+    .cl-lbl {
+      font-family: 'JetBrains Mono', monospace; font-size: 9px;
+      font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.28); margin-bottom: 2px;
+    }
+    .cl-val {
+      font-size: 13px; font-weight: 500;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .cl-arr { color: rgba(255,255,255,.2); transition: transform .15s; flex-shrink: 0; }
+    .contact-link:hover .cl-arr { transform: translateX(2px); }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #08080B; padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+    .footer span {
+      font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+      color: rgba(255,255,255,.18);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 520px) {
+      .hero-stats { flex-direction: column; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .hero-stat:last-child { border-bottom: none; }
+      .dec-body { padding-left: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ STICKY NAV ══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="nav-name">Om Joshi</span>
+      <span class="nav-sep"></span>
+      <span class="nav-role">Performance Marketing</span>
+    </div>
+    <button class="btn-cta" id="cta-btn">Get in Touch</button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Case Study · Meta Ads</div>
+    <h1 class="hero-title">Nivora Coffee<br>Company</h1>
+    <p class="hero-subtitle">14-Day Acquisition Campaign</p>
+    <p class="hero-desc">
+      I designed and ran a full Meta Ads acquisition system from zero — building the audience strategy, ad copywriting, funnel architecture, custom pixel setup, and creative testing for a new D2C coffee brand on a <strong>₹2,730 test budget</strong>.
+    </p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-val">₹2,730</span>
+        <span class="hero-stat-label">Total Spend</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">5,255</span>
+        <span class="hero-stat-label">Link Clicks</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">4,520</span>
+        <span class="hero-stat-label">Intent Events</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">86%</span>
+        <span class="hero-stat-label">Bridge Rate</span>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <!--
+        ⚡ CAMPAIGN REPORT DOWNLOAD BUTTON
+        ═════════════════════════════════════════
+        Replace href="#CAMPAIGN_REPORT_LINK" with your actual link.
+        Example: href="https://drive.google.com/file/d/YOUR_FILE_ID/view"
+        Or:       href="https://om-joshi.carrd.co/nivora-report.html"
+        ═════════════════════════════════════════
+      -->
+      <a href="#CAMPAIGN_REPORT_LINK" class="btn-download" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download Full Campaign Report
+      </a>
+    </div>
+
+    <p class="hero-period">Campaign Period · May 15 – 28, 2026 · Pune, India</p>
+  </div>
+</section>
+
+<!-- ══ 01 · CONTEXT ══ -->
+<div class="white-band">
+<div class="container">
+<div class="section fi">
+  <div class="section-label">01 · Context</div>
+  <h2 class="section-title">What I was hired to do</h2>
+  <p class="section-desc">Nivora Coffee Company is a new D2C brand selling South Indian filter coffee powder on Amazon India. They had a product and no digital presence. I came in to build their Meta Ads infrastructure from scratch — with zero prior pixel data, no retargeting audience, and no brand recognition to lean on.</p>
+
+  <div class="ctx-grid">
+    <div class="ctx-card dark">
+      <div class="ctx-lbl">My Role</div>
+      <div class="ctx-val">End-to-end campaign management — strategy, audience design, copywriting, funnel architecture, pixel setup, creative testing, and post-campaign analysis.</div>
+    </div>
+    <div class="ctx-card">
+      <div class="ctx-lbl">Starting Point</div>
+      <div class="ctx-val">No brand recognition. No existing pixel data. No retargeting audience. Every rupee spent was on cold traffic only.</div>
+    </div>
+    <div class="ctx-card">
+      <div class="ctx-lbl">Campaign Objective</div>
+      <div class="ctx-val">Not to maximize sales on this run — to validate whether the funnel worked, which audiences responded, and which creatives performed before scaling.</div>
+    </div>
+    <div class="ctx-card">
+      <div class="ctx-lbl">The Core Constraint</div>
+      <div class="ctx-val">No Amazon Brand Registry access, which meant no native pixel or attribution tools. This single constraint shaped every technical decision I made.</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ══ 02 · ARCHITECTURE ══ -->
+<div class="container">
+<div class="section fi">
+  <div class="section-label">02 · System Architecture</div>
+  <h2 class="section-title">What I built</h2>
+  <p class="section-desc">The full three-layer funnel I designed and configured — from audience targeting on Meta to the final Amazon listing. Every layer was a deliberate choice, not a default.</p>
+
+  <div class="arch-wrap">
+    <!-- Layer 01 -->
+    <div class="arch-node fi">
+      <div class="arch-ico meta">M</div>
+      <div class="arch-node-lbl">Layer 01</div>
+      <div class="arch-node-title">Meta Ads System</div>
+      <ul class="arch-items">
+        <li>2 audience-specific ad sets</li>
+        <li>4 creative variants A/B tested</li>
+        <li>Sales objective · ViewContent optimisation</li>
+        <li>Instagram + Facebook placements</li>
+        <li>Audience overlap exclusions configured</li>
+      </ul>
+    </div>
+
+    <div class="arch-arrow">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </div>
+
+    <!-- Layer 02 -->
+    <div class="arch-node fi d1">
+      <div class="arch-ico bridge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="arch-node-lbl">Layer 02 — I Built This</div>
+      <div class="arch-node-title">Custom Bridge Page</div>
+      <ul class="arch-items">
+        <li>Mobile-responsive, GitHub Pages hosted</li>
+        <li>Meta Pixel + CAPI integrated</li>
+        <li>PageView + ViewContent events firing</li>
+        <li>Product education before the buy</li>
+        <li>Large CTA routing users to Amazon</li>
+      </ul>
+    </div>
+
+    <div class="arch-arrow">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </div>
+
+    <!-- Layer 03 -->
+    <div class="arch-node fi d2">
+      <div class="arch-ico amazon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/></svg>
+      </div>
+      <div class="arch-node-lbl">Layer 03</div>
+      <div class="arch-node-title">Amazon Listing</div>
+      <ul class="arch-items">
+        <li>SEO-optimised title + bullet points</li>
+        <li>Freshly Roasted / Made in India badges</li>
+        <li>4.6★ · ₹370 · Grocery & Gourmet category</li>
+        <li>Final conversion destination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Why the bridge page was the most critical decision:</strong> Without Amazon Brand Registry, there's no way to place a pixel on Amazon. Without the bridge page, I'd have had 5,255 clicks and zero information on what happened next. It's also what allowed Meta's algorithm to learn from real user behaviour — not just raw clicks. The 86% bridge conversion rate confirms the architecture was right.
+  </div>
+</div>
+</div>
+
+<!-- ══ 03 · AUDIENCE STRATEGY ══ -->
+<div class="white-band">
+<div class="container">
+<div class="section fi">
+  <div class="section-label">03 · Audience Strategy</div>
+  <h2 class="section-title">Two audiences. Two distinct strategies.</h2>
+  <p class="section-desc">I didn't run one generic coffee ad. I identified two psychographically distinct segments with different purchase barriers and built separate positioning for each — because the same message wouldn't work for both.</p>
+
+  <div class="aud-grid">
+    <div class="aud-card fi">
+      <div class="aud-tag">Ad Set 1</div>
+      <div class="aud-title">Young Adults · 19–25</div>
+      <div class="aud-sub">Convenience-first mindset. Daily instant coffee users who don't fully understand what ground coffee is or why it would matter to them.</div>
+      <div class="aud-hr"></div>
+      <div class="aud-section-lbl">Barriers I had to overcome</div>
+      <div class="aud-item"><span class="aud-dot"></span>Perceived effort — ground coffee feels complicated vs. instant</div>
+      <div class="aud-item"><span class="aud-dot"></span>Awareness gap — many don't know the difference between ground and instant</div>
+      <div class="aud-hr"></div>
+      <div class="aud-section-lbl">My positioning strategy</div>
+      <div class="aud-item"><span class="aud-dot"></span>Simplified the perception: it's an upgrade, not a new brewing ritual</div>
+      <div class="aud-item"><span class="aud-dot"></span>Problem → Solution framing: instant is repetitive / Nivora is easy and better</div>
+      <div class="aud-product">📦 Freshly Ground Arabica/Robusta</div>
+    </div>
+
+    <div class="aud-card fi d1">
+      <div class="aud-tag">Ad Set 2</div>
+      <div class="aud-title">Adults · 30–45</div>
+      <div class="aud-sub">Already familiar with filter coffee taste. They use instant at home but know filter coffee is superior — they just haven't made the switch.</div>
+      <div class="aud-hr"></div>
+      <div class="aud-section-lbl">Barriers I had to overcome</div>
+      <div class="aud-item"><span class="aud-dot"></span>Habit inertia — instant is the routine, switching feels unnecessary</div>
+      <div class="aud-item"><span class="aud-dot"></span>Passive acceptance — they tolerate instant even though they prefer filter</div>
+      <div class="aud-hr"></div>
+      <div class="aud-section-lbl">My positioning strategy</div>
+      <div class="aud-item"><span class="aud-dot"></span>Highlighted the gap: you know filter is better, so why not at home?</div>
+      <div class="aud-item"><span class="aud-dot"></span>Framed as daily upgrade — not a lifestyle change or extra effort</div>
+      <div class="aud-product">☕ South Indian Filter Coffee Powder</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ══ 04 · CREATIVES ══ -->
+<div class="container">
+<div class="section fi">
+  <div class="section-label">04 · Ad Creatives</div>
+  <h2 class="section-title">4 creatives tested. 2 survived.</h2>
+  <p class="section-desc">I ran four creative directions simultaneously. By Day 6, the data was clear enough to cut two and concentrate budget on the winners. Click a card to view the creative.</p>
+
+  <div class="cr-grid">
+
+    <!-- ─────────────────────────────────────────────
+      ⚡ CREATIVE 1 — ""No extra effort.""
+      To add your image, replace the <div class="cr-placeholder"> block below with:
+      <img src="images/no-extra-effort.png" alt="No extra effort">
+      e.g.: <img src="images/no-extra-effort.png" alt="No extra effort">
+    ──────────────────────────────────────────────── -->
+    <div class="cr-card" onclick="openLb(0)">
+      <div class="cr-img-wrap">
+        <div class="cr-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <img src="images/no-extra-effort.png" alt="No extra effort">
+        </div>
+        <span class="cr-badge on">● Running</span>
+        <div class="view-hint">👁 View Creative</div>
+      </div>
+      <div class="cr-body">
+        <div class="cr-hook">"No extra effort"</div>
+        <div class="cr-adset">Ad Set 1 · Young Adults 19–25</div>
+        <div class="cr-stats">
+          <div class="cr-stat"><span class="cr-stat-val">₹1,363</span><span class="cr-stat-lbl">Spent</span></div>
+          <div class="cr-stat"><span class="cr-stat-val">118K</span><span class="cr-stat-lbl">Reach</span></div>
+          <div class="cr-stat"><span class="cr-stat-val">2,694</span><span class="cr-stat-lbl">Clicks</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────
+      ⚡ CREATIVE 2 — "That filter coffee. Your Kitchen."
+      To add your image, replace the <div class="cr-placeholder"> block below with:
+      <img src="./YOUR_IMAGE_PATH.jpg" alt="Filter coffee your kitchen">
+      e.g.: <img src="images/that-filter-coffee-your-kitchen.png" alt="Filter coffee your kitchen">
+    ──────────────────────────────────────────────── -->
+    <div class="cr-card" onclick="openLb(1)">
+      <div class="cr-img-wrap">
+        <div class="cr-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <img src="images/that-filter-coffee-your kitchen.png" alt="Filter coffee your kitchen">
+        </div>
+        <span class="cr-badge on">● Running</span>
+        <div class="view-hint">👁 View Creative</div>
+      </div>
+      <div class="cr-body">
+        <div class="cr-hook">"That filter coffee. Your Kitchen."</div>
+        <div class="cr-adset">Ad Set 2 · Adults 30–45</div>
+        <div class="cr-stats">
+          <div class="cr-stat"><span class="cr-stat-val">₹1,364</span><span class="cr-stat-lbl">Spent</span></div>
+          <div class="cr-stat"><span class="cr-stat-val">120K</span><span class="cr-stat-lbl">Reach</span></div>
+          <div class="cr-stat"><span class="cr-stat-val">2,560</span><span class="cr-stat-lbl">Clicks</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────
+      ⚡ CREATIVE 3 — "This is what coffee is supposed to taste like."
+      To add your image, replace the <div class="cr-placeholder"> block below with:
+      <img src="./YOUR_IMAGE_PATH.jpg" alt="Coffee taste">
+      e.g.: <img src="images/supposed-to-taste-like.png" alt="Coffee taste">
+    ──────────────────────────────────────────────── -->
+    <div class="cr-card killed">
+      <div class="cr-img-wrap">
+        <div class="cr-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <img src="images/supposed-to-taste-like.png" alt="Coffee taste">
+        </div>
+        <span class="cr-badge off">✕ Paused Day 6</span>
+      </div>
+      <div class="cr-body">
+        <div class="cr-hook">"This is what coffee is supposed to taste like."</div>
+        <div class="cr-adset">Ad Set 1 · Turned Off Early</div>
+        <div class="cr-stats">
+          <div class="cr-stat"><span class="cr-stat-val">₹1.89</span><span class="cr-stat-lbl">Spent</span></div>
+          <div class="cr-stat"><span class="cr-stat-val">343</span><span class="cr-stat-lbl">Reach</span></div>
+          <div class="cr-stat"><span class="cr-stat-val">0</span><span class="cr-stat-lbl">Clicks</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────
+      ⚡ CREATIVE 4 — "Ditch the packet."
+      To add your image, replace the <div class="cr-placeholder"> block below with:
+      <img src="./YOUR_IMAGE_PATH.jpg" alt="Ditch the packet">
+      e.g.: <img src="images/ditch-the-packet.png" alt="Ditch the packet">
+    ──────────────────────────────────────────────── -->
+    <div class="cr-card killed">
+      <div class="cr-img-wrap">
+        <div class="cr-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <img src="images/ditch-the-packet.png" alt="Ditch the packet">
+        </div>
+        <span class="cr-badge off">✕ Paused Day 6</span>
+      </div>
+      <div class="cr-body">
+        <div class="cr-hook">"Ditch the packet."</div>
+        <div class="cr-adset">Ad Set 2 · Turned Off Early</div>
+        <div class="cr-stats">
+          <div class="cr-stat"><span class="cr-stat-val">₹1.34</span><span class="cr-stat-lbl">Spent</span></div>
+          <div class="cr-stat"><span class="cr-stat-val">239</span><span class="cr-stat-lbl">Reach</span></div>
+          <div class="cr-stat"><span class="cr-stat-val">1</span><span class="cr-stat-lbl">Clicks</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cr-grid -->
+</div>
+</div>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lightbox" id="lightbox" onclick="closeLbOutside(event)">
+  <div class="lb-wrap">
+    <div class="lb-close" id="lb-close">✕</div>
+    <div id="lb-media"></div>
+    <div class="lb-info">
+      <div class="lb-hook" id="lb-hook"></div>
+      <div class="lb-desc" id="lb-desc"></div>
+    </div>
+  </div>
+  <div class="lb-nav-btn lb-prev" id="lb-prev">‹</div>
+  <div class="lb-nav-btn lb-next" id="lb-next">›</div>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<!-- ══ 05 · RESULTS ══ -->
+<div class="white-band">
+<div class="container">
+<div class="section fi">
+  <div class="section-label">05 · Results</div>
+  <h2 class="section-title">The numbers that actually matter.</h2>
+  <p class="section-desc">I deliberately chose not to optimise for cheap click volume. These are the metrics I tracked, and what they tell me about how the system performed on cold traffic with no prior history.</p>
+
+  <div class="met-grid">
+    <div class="met-card a fi">
+      <div class="met-lbl">Cost / ViewContent</div>
+      <div class="met-val">₹0.60</div>
+      <div class="met-note">My primary KPI. Cold traffic, zero retargeting, zero brand equity.</div>
+    </div>
+    <div class="met-card g fi d1">
+      <div class="met-lbl">Bridge Conversion Rate</div>
+      <div class="met-val">86%</div>
+      <div class="met-note">5,255 clicks → 4,520 intent events. Page copy and CTA were working.</div>
+    </div>
+    <div class="met-card fi d2">
+      <div class="met-lbl">Click-Through Rate</div>
+      <div class="met-val">1.75%</div>
+      <div class="met-note">Industry benchmark for cold video: 0.5–1.2%. We beat baseline.</div>
+    </div>
+    <div class="met-card fi">
+      <div class="met-lbl">Unique Reach</div>
+      <div class="met-val">301K</div>
+      <div class="met-note">Across Instagram Reels and Facebook in 14 days.</div>
+    </div>
+    <div class="met-card fi d1">
+      <div class="met-lbl">Avg. Frequency</div>
+      <div class="met-val">1.03×</div>
+      <div class="met-note">Near-1× means Meta found 5K+ genuinely distinct people. No fatigue.</div>
+    </div>
+    <div class="met-card fi d2">
+      <div class="met-lbl">IG vs FB Cost/VC</div>
+      <div class="met-val">2.4×</div>
+      <div class="met-note">Instagram: ₹0.58. Facebook: ₹1.37. Algorithm self-selected correctly.</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px;letter-spacing:-.01em;">Week-over-week improvement</h3>
+  <p style="font-size:13.5px;color:var(--text-2);margin-bottom:20px;max-width:580px;line-height:1.7;">
+    This is one of the most important signals in any campaign. I made zero changes between Week 1 and Week 2. The algorithm did this on its own — which only happens when the setup is structured correctly from Day 1.
+  </p>
+
+  <div class="wk-grid">
+    <div class="wk-card fi">
+      <div class="wk-label">Week 1 · Learning Phase</div>
+      <div class="wk-period">May 15 – 21</div>
+      <div class="wk-row"><span>CPM</span><span>₹20.82</span></div>
+      <div class="wk-row"><span>CTR</span><span>1.38%</span></div>
+      <div class="wk-row"><span>Cost / ViewContent</span><span>₹0.93</span></div>
+    </div>
+    <div class="wk-card w2 fi d1">
+      <div class="wk-label g">Week 2 · After Learning</div>
+      <div class="wk-period">May 22 – 28</div>
+      <div class="wk-row"><span>CPM</span><span class="better">₹10.13 ↓ 51%</span></div>
+      <div class="wk-row"><span>CTR</span><span class="better">2.11% ↑ 53%</span></div>
+      <div class="wk-row"><span>Cost / ViewContent</span><span class="better">₹0.44 ↓ 52%</span></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ══ 06 · STRATEGIC DECISIONS ══ -->
+<div class="container">
+<div class="section fi">
+  <div class="section-label">06 · Thought Process</div>
+  <h2 class="section-title">Why I made the decisions I made.</h2>
+  <p class="section-desc">The results matter, but the decisions behind them matter more. This is how I think about running a campaign — and where most of the real work happens.</p>
+
+  <div class="dec-list">
+
+    <div class="dec-item fi">
+      <div class="dec-head">
+        <div class="dec-num">1</div>
+        <div>
+          <div class="dec-title">I ran a Sales objective — not a Traffic campaign</div>
+          <div class="dec-sub">Optimised for ViewContent events, not the cheapest clicks</div>
+        </div>
+      </div>
+      <div class="dec-body">
+        A standard Traffic campaign would have generated more clicks at a lower CPC and looked better on paper. I deliberately avoided it. Traffic campaigns optimise for the cheapest clicks — which typically come from low-intent users who immediately bounce. <strong>I structured this as a Sales objective with ViewContent as the conversion event</strong>, which teaches Meta's algorithm to find people likely to land on the bridge page and actually engage with the product. Lower volume, stronger signal. That's the trade I made — and the 86% bridge rate is the payoff.
+        <div><span class="dec-tag s">Campaign Strategy</span></div>
+      </div>
+    </div>
+
+    <div class="dec-item fi d1">
+      <div class="dec-head">
+        <div class="dec-num">2</div>
+        <div>
+          <div class="dec-title">I built the bridge page before running a single ad</div>
+          <div class="dec-sub">The funnel would have been a black box without it</div>
+        </div>
+      </div>
+      <div class="dec-body">
+        Without Amazon Brand Registry, pixel placement on Amazon is impossible. Running ads directly to Amazon would have given us money in, zero data out. <strong>I built a custom landing page on GitHub Pages and integrated the Meta Pixel + CAPI before launch</strong>, routing users through it on the way to Amazon. This gave us PageView and ViewContent tracking, a controlled product story before the purchase decision, and the ability to build a retargeting audience for the next campaign. Without the bridge page, none of that data would exist.
+        <div><span class="dec-tag t">Technical Architecture</span></div>
+      </div>
+    </div>
+
+    <div class="dec-item fi d2">
+      <div class="dec-head">
+        <div class="dec-num">3</div>
+        <div>
+          <div class="dec-title">I cut two creatives on Day 6, not Day 14</div>
+          <div class="dec-sub">Knowing when to stop is as important as knowing when to scale</div>
+        </div>
+      </div>
+      <div class="dec-body">
+        Creative 3 had spent ₹1.89 with 343 reach and zero clicks. Creative 4 had spent ₹1.34 with 239 reach and one click. The signal was clear early. <strong>I paused both immediately and redirected the full budget to the two performing creatives</strong>, which went on to reach 120K–149K people respectively. Waiting for the full test window would have been budget burn with no additional learning. Early clarity is better than delayed evidence.
+        <div><span class="dec-tag d">Data Decision</span></div>
+      </div>
+    </div>
+
+    <div class="dec-item fi">
+      <div class="dec-head">
+        <div class="dec-num">4</div>
+        <div>
+          <div class="dec-title">I kept both audience segments despite similar performance</div>
+          <div class="dec-sub">Similar results don't mean collapse into one — they mean dual-market fit</div>
+        </div>
+      </div>
+      <div class="dec-body">
+        Both ad sets performed similarly across CTR, CPC, and ViewContent volume. A short-sighted read would be to pick one and drop the other. My interpretation: <strong>both audiences are genuinely interested in the product, which means Nivora has a dual-market fit</strong>. The right next step is not consolidation — it's to write separate, sharpened creative messaging for each segment so they're spoken to in their own language. Efficiency will follow once the messaging is segment-specific.
+        <div><span class="dec-tag s">Audience Strategy</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══ 07 · KEY LEARNINGS ══ -->
+<div class="white-band">
+<div class="container">
+<div class="section fi">
+  <div class="section-label">07 · Key Learnings</div>
+  <h2 class="section-title">What this campaign confirmed.</h2>
+  <p class="section-desc">Beyond the metrics — the strategic insights that will shape Nivora's next campaign and any brand I work with at this stage.</p>
+
+  <div class="learn-grid">
+    <div class="learn-card fi">
+      <div class="learn-icon">📱</div>
+      <div class="learn-title">Instagram Reels is the channel</div>
+      <div class="learn-desc">96%+ of all clicks and ViewContent events came from Instagram Reels. Facebook got spend but minimal results. Future campaigns should go Instagram Reels-first — or Instagram-only — for maximum efficiency from day one.</div>
+    </div>
+    <div class="learn-card fi d1">
+      <div class="learn-icon">⏳</div>
+      <div class="learn-title">Don't reset during the learning phase</div>
+      <div class="learn-desc">CPM halved between Week 1 and Week 2 with zero campaign changes. The algorithm did the work. Every reset restarts that process from zero. I recommend a 7-day minimum hands-off window as a standard in every campaign going forward.</div>
+    </div>
+    <div class="learn-card fi d2">
+      <div class="learn-icon">🎯</div>
+      <div class="learn-title">Attribution is the next problem to solve</div>
+      <div class="learn-desc">Amazon's wall means purchase data stays invisible. This campaign likely drove more conversions than were reported. Moving to Shopify — or implementing Amazon Attribution links — would close the loop and unlock real ROAS tracking for scaling decisions.</div>
+    </div>
+    <div class="learn-card fi d3">
+      <div class="learn-icon">📊</div>
+      <div class="learn-title">The market exists. This is not theory.</div>
+      <div class="learn-desc">Cold traffic, zero social proof, zero retargeting, zero brand recognition — and a 1.75% CTR above industry benchmarks. Demand is there. The next campaign is about attribution and efficiency, not validation. The system works.</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-lbl">Let's Build Something</div>
+    <h2 class="contact-title">I'm available for<br><em>the right project.</em></h2>
+    <p class="contact-desc">If you're looking for someone who builds real acquisition systems — not just runs ads and sends reports — I'd be glad to talk through what that looks like for your brand.</p>
+
+    <div class="contact-links">
+      <a href="https://om-joshi.carrd.co" class="contact-link" target="_blank">
+        <div class="cl-ico" style="background:rgba(255,255,255,.06);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="cl-text">
+          <div class="cl-lbl">Website</div>
+          <div class="cl-val">om-joshi.carrd.co</div>
+        </div>
+        <div class="cl-arr">→</div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/om-joshi-performance-marketing/" class="contact-link" target="_blank">
+        <div class="cl-ico" style="background:rgba(10,102,194,.2);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div class="cl-text">
+          <div class="cl-lbl">LinkedIn</div>
+          <div class="cl-val">om-joshi-performance-marketing</div>
+        </div>
+        <div class="cl-arr">→</div>
+      </a>
+
+      <a href="https://www.instagram.com/bromjoshi" class="contact-link" target="_blank">
+        <div class="cl-ico" style="background:linear-gradient(135deg,rgba(225,48,108,.28),rgba(193,53,132,.18));">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="cl-text">
+          <div class="cl-lbl">Instagram</div>
+          <div class="cl-val">@bromjoshi</div>
+        </div>
+        <div class="cl-arr">→</div>
+      </a>
+
+      <a href="mailto:joshiom136@gmail.com" class="contact-link">
+        <div class="cl-ico" style="background:rgba(232,160,32,.14);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="cl-text">
+          <div class="cl-lbl">Email</div>
+          <div class="cl-val">joshiom136@gmail.com</div>
+        </div>
+        <div class="cl-arr">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer">
+  <span>Nivora Coffee Company · Meta Ads Campaign · May 2026</span>
+  <span>Portfolio — Om Joshi · Performance Marketing</span>
+</div>
+
+
+<!-- ══ JAVASCRIPT ══ -->
+<script>
+  /* ── Sticky CTA → scroll to contact ── */
+  document.getElementById('cta-btn').addEventListener('click', () => {
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* ── Scroll-triggered fade-ins ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+  /* ── Lightbox ── */
+  const creatives = [
+  {
+    hook: '"No extra effort"',
+    desc: 'Ad Set 1 · Young Adults 19–25 · Reached 118K · 2,694 clicks',
+    src: 'images/no-extra-effort.png'
+  },
+  {
+    hook: '"That filter coffee. Your Kitchen."',
+    desc: 'Ad Set 2 · Adults 30–45 · Reached 120K · 2,560 clicks',
+    src: 'images/that-filter-coffee-your kitchen.png'
+  }
+];
+
+  let lbIdx = 0;
+  const lb      = document.getElementById('lightbox');
+  const lbMedia = document.getElementById('lb-media');
+  const lbHook  = document.getElementById('lb-hook');
+  const lbDesc  = document.getElementById('lb-desc');
+  const lbCount = document.getElementById('lb-counter');
+
+  function renderLb(i) {
+    const c = creatives[i];
+    lbHook.textContent  = c.hook;
+    lbDesc.textContent  = c.desc;
+    lbCount.textContent = `${i + 1} / ${creatives.length}`;
+    if (c.src) {
+      lbMedia.innerHTML = `<div class="lb-media"><img src="${c.src}" alt="${c.hook}"></div>`;
+    } else {
+      lbMedia.innerHTML = `
+        <div class="lb-media">
+          <div class="lb-media-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <p>Image placeholder — add your creative</p>
+            <div class="lb-path">→ Replace src with: ./${c.path}</div>
+          </div>
+        </div>`;
+    }
+  }
+
+  function openLb(i) {
+    lbIdx = i;
+    renderLb(i);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeLbOutside(e) { if (e.target === lb) closeLb(); }
+
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  document.getElementById('lb-prev').addEventListener('click', e => {
+    e.stopPropagation();
+    lbIdx = (lbIdx - 1 + creatives.length) % creatives.length;
+    renderLb(lbIdx);
+  });
+  document.getElementById('lb-next').addEventListener('click', e => {
+    e.stopPropagation();
+    lbIdx = (lbIdx + 1) % creatives.length;
+    renderLb(lbIdx);
+  });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLb();
+    if (e.key === 'ArrowLeft')  { lbIdx = (lbIdx - 1 + creatives.length) % creatives.length; renderLb(lbIdx); }
+    if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % creatives.length; renderLb(lbIdx); }
+  });
+</script>
+
+</body>
+</html>
